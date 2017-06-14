@@ -4,8 +4,8 @@
  */
 const paintTween = function (tween){
   let cvs = document.createElement('canvas')
-  cvs.width = 700
-  cvs.height = 700
+  cvs.width = 100
+  cvs.height = 100
   document.body.appendChild(cvs)
 
   let webgl = new window.Mintew.WebGL(cvs)
@@ -59,4 +59,8 @@ describe('Tween', function(){
     paintTween(window.Mintew.Utils.Tween.quarticOut)
     paintTween(window.Mintew.Utils.Tween.quarticInOut)
   })
+})
+
+describe('Utils', function (){
+  require('./tween-invoker.js')
 })

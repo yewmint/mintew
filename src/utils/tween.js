@@ -53,6 +53,10 @@ const quartic = (v)=> v * v * v * v
 
 /**
  * Provides functionaliry to tween value.
+ * @example
+ * import { Tween } from './src/utils'
+ *
+ * let tweenedValue = Tween.linear(value)
  */
 export class Tween{
   /**

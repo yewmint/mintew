@@ -7,8 +7,8 @@ const { resolve } = require('path')
  */
 const getContext = function (){
   let canvas = document.createElement('canvas')
-  canvas.width = 700
-  canvas.height = 700
+  canvas.width = 100
+  canvas.height = 100
   document.body.appendChild(canvas)
   let webgl = new window.Mintew.WebGL(canvas)
   webgl.init()
@@ -38,7 +38,7 @@ describe('WebGL', function (){
     webgl.clear()
   })
 
-  it('should draw correct image', function (done){
+  it('should draw correct image', function (){
     let webgl = getContext()
     let img = new Image()
     img.src = resolve(__dirname, 'test.png')
@@ -52,8 +52,6 @@ describe('WebGL', function (){
 
       webgl.clear()
       webgl.drawBox(box)
-
-      done()
     }
   })
 

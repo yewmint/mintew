@@ -14,6 +14,8 @@ const validateVbo = function (vbo){
 /**
  * WebGL provides simple way to handle webgl request.
  * @example
+ * import { WebGL } from './src/webgl'
+ *
  * webgl = new WebGL(canvas)
  * webgl.init()
  * webgl.clear()
