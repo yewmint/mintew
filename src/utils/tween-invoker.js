@@ -88,6 +88,7 @@ export class TweenInvoker {
    * @param {number} begin begin value of tween
    * @param {number} end end value of tween
    * @param {function} assign function to assign tweened value
+   * @return {Promise} on tween end
    */
   static linear (dur, begin, end, assign){
     return new Promise((resolve)=>{
@@ -101,6 +102,7 @@ export class TweenInvoker {
    * @param {number} begin begin value of tween
    * @param {number} end end value of tween
    * @param {function} assign function to assign tweened value
+   * @return {Promise} on tween end
    */
   static easeIn (dur, begin, end, assign){
     return new Promise((resolve)=>{
@@ -114,6 +116,7 @@ export class TweenInvoker {
    * @param {number} begin begin value of tween
    * @param {number} end end value of tween
    * @param {function} assign function to assign tweened value
+   * @return {Promise} on tween end
    */
   static easeOut (dur, begin, end, assign){
     return new Promise((resolve)=>{
@@ -127,6 +130,7 @@ export class TweenInvoker {
    * @param {number} begin begin value of tween
    * @param {number} end end value of tween
    * @param {function} assign function to assign tweened value
+   * @return {Promise} on tween end
    */
   static easeInOut (dur, begin, end, assign){
     return new Promise((resolve)=>{
@@ -140,6 +144,7 @@ export class TweenInvoker {
    * @param {number} begin begin value of tween
    * @param {number} end end value of tween
    * @param {function} assign function to assign tweened value
+   * @return {Promise} on tween end
    */
   static cubicIn (dur, begin, end, assign){
     return new Promise((resolve)=>{
@@ -153,6 +158,7 @@ export class TweenInvoker {
    * @param {number} begin begin value of tween
    * @param {number} end end value of tween
    * @param {function} assign function to assign tweened value
+   * @return {Promise} on tween end
    */
   static cubicOut (dur, begin, end, assign){
     return new Promise((resolve)=>{
@@ -166,6 +172,7 @@ export class TweenInvoker {
    * @param {number} begin begin value of tween
    * @param {number} end end value of tween
    * @param {function} assign function to assign tweened value
+   * @return {Promise} on tween end
    */
   static cubicInOut (dur, begin, end, assign){
     return new Promise((resolve)=>{
@@ -179,6 +186,7 @@ export class TweenInvoker {
    * @param {number} begin begin value of tween
    * @param {number} end end value of tween
    * @param {function} assign function to assign tweened value
+   * @return {Promise} on tween end
    */
   static quarticIn (dur, begin, end, assign){
     return new Promise((resolve)=>{
@@ -192,6 +200,7 @@ export class TweenInvoker {
    * @param {number} begin begin value of tween
    * @param {number} end end value of tween
    * @param {function} assign function to assign tweened value
+   * @return {Promise} on tween end
    */
   static quarticOut (dur, begin, end, assign){
     return new Promise((resolve)=>{
@@ -205,6 +214,7 @@ export class TweenInvoker {
    * @param {number} begin begin value of tween
    * @param {number} end end value of tween
    * @param {function} assign function to assign tweened value
+   * @return {Promise} on tween end
    */
   static quarticInOut (dur, begin, end, assign){
     return new Promise((resolve)=>{

@@ -2,16 +2,18 @@ import { TweenInvoker } from '../utils'
 
 /**
  * Audio Source provides functionality to operate single audio.
+ * @example
+ * let source = sound.get('music name')
+ * source.play()
+ * source.volumn = 1
+ * await source.fadeIn()
  */
 export class Source {
   /**
    * @private
    * @param {Audio} audio loaded audio object
-   * @param {Sound} sound sound object
    */
-  constructor (audio, sound){
-    super()
-
+  constructor (audio){
     /**
      * @private
      * @type {Audio} _audio loaded audio object
@@ -20,15 +22,18 @@ export class Source {
 
     /**
      * @private
-     * @type {Sound} sound sound object
-     */
-    this._sound = sound
-
-    /**
-     * @private
      * @type {number} _volumn volumn of source
      */
     this._volumn = 1
+
+    /**
+     * @private
+     * @type {number} _mainVolumn system main volumn
+     */
+    this._mainVolumn = 1
+
+    // dump volumn into audio
+    this._updateVolumn()
   }
 
   /**
@@ -49,8 +54,8 @@ export class Source {
    * stop current audio
    */
   stop (){
-    this._audio.currentTime = 0
     this.pause()
+    this._audio.currentTime = 0
   }
 
   /**
@@ -87,7 +92,18 @@ export class Source {
     }
 
     this._volumn = val
-    this._audio.volumn = val * this._sound.volumn
+    this._updateVolumn()
+  }
+
+  /**
+   * set system main volumn
+   * this could only be called by Sound
+   * @private
+   * @param {number} val main voilumn
+   */
+  setMainVolumn (val){
+    this._mainVolumn = val
+    this._updateVolumn()
   }
 
   /**
@@ -104,5 +120,12 @@ export class Source {
    */
   fadeOut (dt){
     TweenInvoker.linear(dt, 1, 0, (val)=> this.volumn = val)
+  }
+
+  /**
+   * update volumn of audio with volumn * main-volumn
+   */
+  _updateVolumn (){
+    this._audio.volumn = this._volumn * this._mainVolumn
   }
 }

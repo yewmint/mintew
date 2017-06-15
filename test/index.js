@@ -8,4 +8,5 @@ describe('Mintew', function (){
   })
   require('./webgl')
   require('./utils')
+  require('./sound')
 })
