@@ -88,7 +88,8 @@ export class Source {
    */
   set volumn (val){
     if (val < 0 || val > 1) {
-      throw new Error('Source: volumn out of range.')
+      val = val < 0 ? 0 : 1
+      console.warn('Warning: Volumn out of range.')
     }
 
     this._volumn = val
