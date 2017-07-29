@@ -61,6 +61,4 @@ describe('Tween', function(){
   })
 })
 
-describe('Utils', function (){
-  require('./tween-invoker.js')
-})
+require('./tween-invoker.js')

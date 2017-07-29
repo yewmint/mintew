@@ -6,20 +6,20 @@
 
 import { Rect } from '../utils'
 
- /**
-  * Sprite for painting
-  */
+/**
+* Sprite for painting
+*/
 export class Sprite {
   /**
    * @param {WebGL} webgl webgl instance
-   * TODO: add uv, size
+   * @param {Texture} texture texture instance
    */
-  constructor (webgl, size, texture, uv = Rect.one()){
+  constructor (webgl, texture, uv = Rect.one()){
     /**
-     * webgl instance
-     * @private
-     * @type {WebGL} _webgl
-     */
+    * webgl instance
+    * @private
+    * @type {WebGL} _webgl
+    */
     this._webgl = webgl
 
     /**
@@ -30,8 +30,15 @@ export class Sprite {
     this._box = webgl.box()
 
     /**
+    * uv for texture
+    * @private
+    * @type {Rect} _uv
+    */
+    this._uv = uv
+
+    /**
      * texture of sprite
-     * @type {WebGLTexture} texture
+     * @type {Texture} texture
      */
     this.texture = texture
 
@@ -58,8 +65,31 @@ export class Sprite {
      * @type {Point} scale
      */
     this.scale = Point.origin()
+
+    this._updateBox()
   }
 
+  /**
+  * udpate box data
+  */
+  _updateBox (){
+    let tex = this.texture
+    let uv = this._uv
+    let box = this._box
+
+    let bpt = tex.convCoord(uv.bx, uv.by)
+    let ept = tex.convCoord(uv.ex, uv.ey)
+
+    box.size(tex.width, tex.height)
+    box.uv(bpt.x, bpt.y, ept.x, ept.y)
+  }
+
+  /**
+  * paint sprite on canvas
+  * @param {Point} ctxPos position of context
+  * @param {number} ctxRot rotation of context
+  * @param {Point} ctxScl scale of context
+  */
   paint (ctxPos, ctxRot, ctxScl){
     let webgl = this.webgl
     let curPos = this.position.add(ctxPos)

@@ -110,9 +110,9 @@ export class WebGL{
   }
 
   /**
-   * create a box used to paint texture
+   * create a texture from texture
    * @param {Image} img image of texture
-   * @return {WebGLTexture} perspective matrix
+   * @return {WebGLTexture}
    */
   loadTexture (img){
     const gl = this._gl

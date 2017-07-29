@@ -1,3 +1,7 @@
+/**
+* @author yewmint
+*/
+
 import { Sound } from './sound'
 import { Source } from './source'
 import { Func } from '../utils'
@@ -6,7 +10,7 @@ import { Func } from '../utils'
  * Provides functionality to prr-load all audios
  * @example
  * import { SoundLoader } from './sound'
- * 
+ *
  * SoundLoader.push('path/to/music.ogg')
  * let sound = await SoundLoader.load()
  */

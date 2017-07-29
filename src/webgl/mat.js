@@ -3,6 +3,8 @@
  * @private
  * @return {number[]} base matrix
  */
+
+ //TODO : refactor mat, webgl, sprite
 const mat4 = function (){
   let mat = new Array(4 * 4).fill(0.0)
 
@@ -110,5 +112,25 @@ export class Mat {
       str += '\n'
     }
     return str
+  }
+
+  /**
+  * multiply matA by matB
+  * @param {number[]} matA
+  * @param {number[]} matB
+  * @return {number[]}
+  */
+  static multiply (matA, matB){
+    let answer = mat4()
+    for (let row = 0; row < 4; ++row){
+      for (let col = 0; col < 4; ++col){
+        let element = 0
+        for (let i = 0; i < 4; ++i){
+          element += ele(matA, row, i) * ele(matB, i, col)
+        }
+        ele(answer, row, col, element)
+      }
+    }
+    return answer
   }
 }
