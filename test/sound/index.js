@@ -28,7 +28,6 @@ describe('Sound', function (){
 
   it('should control audio correctly', function (){
     source = sound.get('test')
-    console.log(sound)
     sound.mute()
     sound.volumn = 1
     sound.stop()
@@ -41,7 +40,7 @@ describe('Source', function (){
     source.pause()
     source.stop()
     source.play()
-    source.loop = true
+    source.loop = false
     source.volumn = 1
   })
 

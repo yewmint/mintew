@@ -1,6 +1,6 @@
 import { Shader } from './shader'
 import { CLEAR_COLOR } from './const'
-import { Mat } from './mat'
+import { Mat } from '../math'
 import { Box } from './box'
 import { Triangle } from './triangle'
 import { Line } from './line.js'
@@ -78,10 +78,7 @@ export class WebGL{
    */
   _initAttrsAndUnifs (){
     this.view(1280, 720)
-    this.translate(0, 0)
-    this.rotate(0)
-    this.scale(1, 1)
-    this.pivot(0, 0)
+    this.transform(Mat.eye(4, 1))
     this.color([0.0, 0.0, 0.0, 1.0])
   }
 
@@ -133,46 +130,15 @@ export class WebGL{
    */
   view (width, height){
     let viewMat = Mat.view(width, height)
-    this._shader.view(viewMat)
+    this._shader.view(viewMat.data)
   }
 
   /**
-   * change translate matrix of webgl
-   * @param {number} x x axis
-   * @param {number} y y axis
+   * change transform matrix of webgl
+   * @param {Mat} mat
    */
-  translate (x, y){
-    let transMat = Mat.translate(x, y)
-    this._shader.translate(transMat)
-  }
-
-  /**
-   * change rotate matrix of webgl
-   * @param {number} radian radian to rotate
-   */
-  rotate (radian){
-    let rotateMat = Mat.rotate(radian)
-    this._shader.rotate(rotateMat)
-  }
-
-  /**
-   * change scale matrix of webgl
-   * @param {number} sx x scale
-   * @param {number} sy y scale
-   */
-  scale (sx, sy = sx){
-    let scaleMat = Mat.scale(sx, sy)
-    this._shader.scale(scaleMat)
-  }
-
-  /**
-   * change pivot matrix of webgl
-   * @param {number} x x pivot
-   * @param {number} y y pivot
-   */
-  pivot (x, y){
-    let pivotMat = Mat.translate(-x, -y)
-    this._shader.pivot(pivotMat)
+  transform (mat){
+    this._shader.transform(mat.data)
   }
 
   /**
@@ -194,6 +160,14 @@ export class WebGL{
       throw new Error('WebGL: invalid color data.')
     }
     this._shader.setColor(color)
+  }
+
+  /**
+   * set opacity for drawing box
+   * @param {number} opacity
+   */
+  opacity (opa){
+    this._shader.opacity(opa)
   }
 
   /**

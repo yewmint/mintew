@@ -2,6 +2,8 @@
 const { readFileSync } = require('fs')
 const { resolve } = require('path')
 
+const Mat = Mintew.Modules.Math.Mat
+
 /**
  * build a mock canvas
  */
@@ -13,28 +15,14 @@ const getContext = function (){
   let webgl = new window.Mintew.WebGL(canvas)
   webgl.init()
   webgl.view(700, 700)
-  webgl.translate(0, 0)
-  webgl.rotate(0)
-  webgl.scale(1, 1)
-  webgl.pivot(0, 0)
+  webgl.transform(Mat.eye(4, 1))
   return webgl
 }
 
 describe('WebGL', function (){
-  it('should generate a webgl instance', function (){
-    let webgl = getContext()
-    webgl.init()
-    webgl.clear()
-    expect(webgl).to.be.an('object')
-  })
-
   it('should upload correct matrixes', function (){
     let webgl = getContext()
-    webgl.view(512, 512)
-    webgl.translate(0, 0)
-    webgl.rotate(0)
-    webgl.scale(1, 1)
-    webgl.pivot(0, 0)
+    webgl.transform(Mat.eye(4, 1))
     webgl.clear()
   })
 

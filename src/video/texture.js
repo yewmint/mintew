@@ -10,24 +10,33 @@ import { Func } from '../utils'
 * Texture provides functionality to hold WebGLTexture.
 * In case of non power-of-2 texture, Texture expand it into power-of-2 texture.
 */
-class Texture {
+export class Texture {
   /**
   * @param {Image} img
+  * @param {WebGl} webgl
   */
-  constructor (webgl, img) {
+  constructor (img, webgl) {
     /**
-    * width of image
+    * width of texture
     * @type {number} width
     */
     this.width = img.width
 
     /**
-    * height of image
+    * height of texture
     * @type {number} height
     */
     this.height = img.height
-    
-    this._createTexture()
+
+    this._createTexture(img, webgl)
+  }
+
+  /**
+  * bind texture to webgl
+  * @param {WebGL} webgl
+  */
+  bind (webgl){
+    webgl.texture(this._glTex)
   }
 
   /**
@@ -67,6 +76,8 @@ class Texture {
 
     let cvs = document.createElement('canvas')
     let ctx = cvs.getContext('2d')
+    cvs.width = texWidth
+    cvs.height = texHeight
 
     ctx.drawImage(img, 0, texHeight - img.height)
     let fixedImg = ctx.getImageData(0, 0, texHeight, texWidth)

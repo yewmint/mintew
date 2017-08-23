@@ -11,10 +11,6 @@ const paintTween = function (tween){
   let webgl = new window.Mintew.WebGL(cvs)
   webgl.init()
   webgl.view(700, 700)
-  webgl.translate(0, 0)
-  webgl.rotate(0)
-  webgl.scale(1, 1)
-  webgl.pivot(0, 0)
   webgl.clear()
 
   let line = webgl.line()

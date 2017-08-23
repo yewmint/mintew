@@ -42,7 +42,7 @@ export class Func {
   static nextPowerOfTwo (num){
     let ans = 1
 
-    while (ans <= num){
+    while (ans < num){
       ans *= 2
     }
 

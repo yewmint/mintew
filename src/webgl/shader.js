@@ -48,35 +48,12 @@ export class Shader {
   }
 
   /**
-   * upload translate data into gpu
-   * @param {number[]} data data of translate matrix
+   * upload transform data into gpu
+   * @param {number[]} data data of transform matrix
    */
-  translate (data){
-    this._textureProgram.uploadMatrix(data, 'translate')
-  }
-
-  /**
-   * upload rotate data into gpu
-   * @param {number[]} data data of rotate matrix
-   */
-  rotate (data){
-    this._textureProgram.uploadMatrix(data, 'rotate')
-  }
-
-  /**
-   * upload scale data into gpu
-   * @param {number[]} data data of scale matrix
-   */
-  scale (data){
-    this._textureProgram.uploadMatrix(data, 'scale')
-  }
-
-  /**
-   * upload pivot data into gpu
-   * @param {number[]} data data of pivot matrix
-   */
-  pivot (data){
-    this._textureProgram.uploadMatrix(data, 'pivot')
+  transform (data){
+    this._textureProgram.uploadMatrix(data, 'transform')
+    this._graphicProgram.uploadMatrix(data, 'transform')
   }
 
   /**
@@ -98,6 +75,15 @@ export class Shader {
     else {
       this._textureProgram.use()
     }
+  }
+
+  /**
+   * set opacity for texture program
+   * @param {number} opacity
+   */
+  opacity (opa){
+    this._textureProgram.use()
+    this._textureProgram.opacity(opa)
   }
 
   /**

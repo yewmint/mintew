@@ -7,7 +7,7 @@
  * let box = webgl.box()
  * box.size(512, 512)
  * box.uv(0, 0, 1, 1)
- * 
+ *
  * webgl.drawBox(box)
  */
 export class Box{

@@ -1,13 +1,13 @@
 /**
+* @deprecated
+* @see {Mat}
+*/
+
+/**
  * get base matrix
  * @private
  * @return {number[]} base matrix
  */
-
- //TODO : refactor mat, webgl, sprite
- // 每个container有自己唯一的transform
- // 只有修改了container的属性，transform才会被重新计算
- // 每次渲染都从树根开始，计算一层层的transform相乘
 const mat4 = function (){
   let mat = new Array(4 * 4).fill(0.0)
 

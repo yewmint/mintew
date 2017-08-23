@@ -4,19 +4,23 @@
  * @author yewmint
  */
 
-import { Rect } from '../utils'
+import { PaintNode } from './paint-node'
+import { Mat, Rect, Point } from '../math'
 
 /**
 * Sprite for painting
 */
-export class Sprite {
+export class Sprite extends PaintNode {
   /**
    * @param {WebGL} webgl webgl instance
    * @param {Texture} texture texture instance
    */
   constructor (webgl, texture, uv = Rect.one()){
+    super()
+
     /**
     * webgl instance
+    * can not be modifed
     * @private
     * @type {WebGL} _webgl
     */
@@ -31,6 +35,7 @@ export class Sprite {
 
     /**
     * uv for texture
+    * can not be modifed
     * @private
     * @type {Rect} _uv
     */
@@ -38,70 +43,86 @@ export class Sprite {
 
     /**
      * texture of sprite
+     * @private
      * @type {Texture} texture
      */
-    this.texture = texture
+    this._texture = texture
 
     /**
-     * position of sprite
-     * @type {Point} position
-     */
-    this.position = Point.origin()
+    * width of sprite
+    * @private
+    * @type {numver} width
+    */
+    this._width = texture.width * (uv.ex - uv.bx)
 
     /**
-     * pivot of sprite
-     * @type {Point} pivot
-     */
-    this.pivot = Point.origin()
-
-    /**
-     * rotation of sprite
-     * @type {number} rotation
-     */
-    this.rotation = 0
-
-    /**
-     * scale of sprite
-     * @type {Point} scale
-     */
-    this.scale = Point.origin()
+    * height of sprite
+    * @private
+    * @type {numver} height
+    */
+    this._height = texture.height * (uv.ey - uv.by)
 
     this._updateBox()
+    this._updateTransform()
+  }
+
+  /**
+  * width of sprite
+  */
+  get width (){
+    return this._width
+  }
+
+  /**
+  * width of sprite
+  */
+  set width (val){
+    throw "Sprite: can not modify width."
+  }
+
+  /**
+  * height of sprite
+  */
+  get height (){
+    return this._height
+  }
+
+  /**
+  * height of sprite
+  */
+  set height (val){
+    throw "Sprite: can not modify height."
   }
 
   /**
   * udpate box data
   */
   _updateBox (){
-    let tex = this.texture
+    let tex = this._texture
     let uv = this._uv
     let box = this._box
 
     let bpt = tex.convCoord(uv.bx, uv.by)
     let ept = tex.convCoord(uv.ex, uv.ey)
 
-    box.size(tex.width, tex.height)
+    box.size(this.width, this.height)
     box.uv(bpt.x, bpt.y, ept.x, ept.y)
   }
 
   /**
   * paint sprite on canvas
-  * @param {Point} ctxPos position of context
-  * @param {number} ctxRot rotation of context
-  * @param {Point} ctxScl scale of context
+  * @param {Mat} ctxTransform transform of context
+  * @param {number} ctxOpacity opacity of context
   */
-  paint (ctxPos, ctxRot, ctxScl){
-    let webgl = this.webgl
-    let curPos = this.position.add(ctxPos)
-    let curRot = this.rotation + ctxRot
-    let curScl = this.scale.add(ctxScl)
+  paint (ctxTransform = Mat.eye(4, 1), ctxOpacity = 1){
+    let webgl = this._webgl
+    let curTran = this._transform
+    let tran = ctxTransform.multiply(curTran)
+    let opacity = ctxOpacity * this.opacity
 
-    webgl.texture(this.texture)
-    webgl.translate(curPos.x, curPos.y)
-    webgl.rotate(curRot)
-    webgl.pivot(this.pivot)
-    webgl.scale(curScl.x, curScl.y)
-
+    webgl.opacity(opacity)
+    this._texture.bind(webgl)
+    webgl.transform(tran)
     webgl.drawBox(this._box)
   }
 }

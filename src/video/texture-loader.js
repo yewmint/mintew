@@ -8,11 +8,11 @@ import { Texture } from './texture'
 /**
  * TextureLoader provides functionality to pre-load texture.
  */
-class TextureLoader {
+export class TextureLoader {
   /**
-   *
+   * @param {WebGL} webgl
    */
-  constructor (){
+  constructor (webgl){
     /**
      * @private
      * @type {Set} _queue pre-load queue
@@ -24,6 +24,12 @@ class TextureLoader {
      * @type {Map} _textures loaded textures
      */
     this._textures = new Map
+
+    /**
+    * @private
+    * @type {WebGL} _webgl
+    */
+    this._webgl = webgl
   }
 
   /**
@@ -40,16 +46,21 @@ class TextureLoader {
    */
   load (){
     const loadTexture = (resolve)=> {
+      if (this._queue.size === 0){
+        resolve(new Map)
+        return
+      }
+
       for (let url of this._queue){
         let img = document.createElement("img")
         img.src = url
 
         img.onload = ()=> {
           let name = Func.name(url)
-          this._textures.set(name, new Texture(img))
+          this._textures.set(name, new Texture(img, this._webgl))
 
           if (this._textures.size == this._queue.size){
-            resolve(this._sources)
+            resolve(this._textures)
           }
         }
 

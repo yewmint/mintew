@@ -32,6 +32,17 @@ export class TextureProgram extends Program {
     const gl = this._gl
     const samplerLoc = gl.getUniformLocation(this._program, 'uSampler')
     gl.uniform1i(samplerLoc, 0)
+
+    this.opacity(1)
+  }
+
+  /**
+   * set opacity
+   * @param {number} opacity
+   */
+  opacity (opa){
+    const loc = this._unifLoc('opacity')
+    this._gl.uniform1f(loc, opa)
   }
 
   /**

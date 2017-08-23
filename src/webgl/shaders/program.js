@@ -8,36 +8,36 @@ export class Program {
    */
   constructor (gl){
     /**
-     * @private
+     * @protected
      * @type {WebGLRenderingContext} _gl
      */
     this._gl = gl
     /**
-     * @private
+     * @protected
      * @type {WebGLProgram} _program
      */
     this._program = gl.createProgram()
 
     /**
-     * @private
+     * @protected
      * @type {WebGLShader} _vert for vertex shader
      */
     this._vert = gl.createShader(gl.VERTEX_SHADER)
 
     /**
-     * @private
+     * @protected
      * @type {WebGLShader} _frag for fragment shader
      */
     this._frag = gl.createShader(gl.FRAGMENT_SHADER)
 
     /**
-     * @private
+     * @protected
      * @type {Map} _locs map from name to unifrom location
      */
     this._unifLocs = new Map()
 
     /**
-     * @private
+     * @protected
      * @type {Map} _locs map from name to attribute location
      */
     this._attrLocs = new Map()
@@ -64,7 +64,7 @@ export class Program {
 
   /**
    * upload shader source to program
-   * @private
+   * @protected
    * @param {string} source shader source
    * @param {WebGLShader} shader shader to use
    */
@@ -81,7 +81,7 @@ export class Program {
 
   /**
    * compile and use program
-   * @private
+   * @protected
    */
   _compile (){
     const gl = this._gl
@@ -101,7 +101,7 @@ export class Program {
 
   /**
    * enable attrs in shaders
-   * @private
+   * @protected
    */
   _enableAttr (name){
     const gl = this._gl
@@ -113,7 +113,7 @@ export class Program {
 
   /**
    * get location of attribute
-   * @private
+   * @protected
    * @param {string} name name of target location
    */
   _attrLoc (name){
@@ -127,7 +127,7 @@ export class Program {
 
   /**
    * get location of uniform
-   * @private
+   * @protected
    * @param {string} name name of target location
    */
   _unifLoc (name){

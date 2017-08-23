@@ -58,7 +58,15 @@ export class Point {
    * @return {Point}
    */
   static origin (){
-    return new Point(0, 1)
+    return new Point(0, 0)
+  }
+
+  /**
+   * get unit point
+   * @return {Point}
+   */
+  static one (){
+    return new Point(1, 1)
   }
 
   /**
@@ -68,15 +76,72 @@ export class Point {
   constructor (x, y){
     /**
      * x axis
+     * @private
      * @type {number} x
      */
-    this.x = x
+    this._x = x
 
     /**
      * y axis
+     * @private
      * @type {number} y
      */
-    this.y = y
+    this._y = y
+
+    /**
+     * callback when modifed
+     * @private
+     * @type {function} _cb
+     */
+    this._cb = null
+  }
+
+  /**
+  * set callback when modifed
+  * @param {function} cb
+  */
+  onChange (cb){
+    this._cb = cb
+  }
+
+  /**
+  * invoke callback
+  * @private
+  */
+  _invokeCb (){
+    if (this._cb){
+      this._cb()
+    }
+  }
+
+  /**
+  * get x
+  */
+  get x(){
+    return this._x
+  }
+
+  /**
+  * set x
+  */
+  set x(val){
+    this._x = val
+    this._invokeCb()
+  }
+
+  /**
+  * get y
+  */
+  get y(){
+    return this._y
+  }
+
+  /**
+  * set y
+  */
+  set y(val){
+    this._y = val
+    this._invokeCb()
   }
 
   /**
