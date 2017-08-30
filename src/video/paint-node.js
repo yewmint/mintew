@@ -76,6 +76,7 @@ export class PaintNode {
   * pivot of sprite
   */
   set pivot (val){
+    val.onChange(()=> this._updateTransform())
     this._pivot = val
     this._updateTransform()
   }
@@ -106,6 +107,7 @@ export class PaintNode {
   * scale of sprite
   */
   set scale (val){
+    val.onChange(()=> this._updateTransform())
     this._scale = val
     this._updateTransform()
   }
@@ -121,6 +123,7 @@ export class PaintNode {
   * position of sprite
   */
   set position (val){
+    val.onChange(()=> this._updateTransform())
     this._position = val
     this._updateTransform()
   }

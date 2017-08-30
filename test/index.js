@@ -11,4 +11,5 @@ describe('Mintew', function (){
   require('./utils')
   require('./sound')
   require('./video')
+  require('./animation')
 })

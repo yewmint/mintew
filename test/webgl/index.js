@@ -24,6 +24,8 @@ describe('WebGL', function (){
     let webgl = getContext()
     webgl.transform(Mat.eye(4, 1))
     webgl.clear()
+    webgl.release()
+    webgl = null
   })
 
   it('should draw correct image', function (){
@@ -40,6 +42,9 @@ describe('WebGL', function (){
 
       webgl.clear()
       webgl.drawBox(box)
+      webgl.release()
+      webgl = null
+      img = null
     }
   })
 
@@ -53,6 +58,9 @@ describe('WebGL', function (){
     webgl.color([1.0, 0.6, 0.6, 0.8])
     webgl.clear()
     webgl.drawTriangle(tri)
+    webgl.release()
+    webgl = null
+    tri = null
   })
 
   it('should draw correct line', function (){
@@ -64,5 +72,8 @@ describe('WebGL', function (){
     webgl.color([1.0, 1.0, 0.0, 1.0])
     webgl.clear()
     webgl.drawLine(line)
+    webgl.release()
+    webgl = null
+    line = null
   })
 })

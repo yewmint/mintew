@@ -3,6 +3,7 @@ import { SoundLoader } from './sound'
 import * as Utils from './utils'
 import * as Math from './math'
 import * as Video from './video'
+import * as Animation from './animation'
 
 window.Mintew = {
   WebGL,
@@ -10,6 +11,7 @@ window.Mintew = {
   Utils,
   Modules: {
     Math,
-    Video
+    Video,
+    Animation
   }
 }

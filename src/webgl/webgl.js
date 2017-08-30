@@ -49,6 +49,12 @@ export class WebGL{
     this._shader = null
   }
 
+  release (){
+    this._gl = null
+    this._shader = null
+    this._canvas = null
+  }
+
   /**
    * init context of canvas
    */
