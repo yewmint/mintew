@@ -8,7 +8,8 @@
     "dist": "npm run lint && webpack -p",
     "watch": "webpack --watch",
     "doc": "esdoc",
-    "test": "floss -p test"
+    "test": "floss -p test",
+    "single": "start http://127.0.0.1:1234/test/single & node server"
   },
   "author": "yewmint",
   "license": "MIT",

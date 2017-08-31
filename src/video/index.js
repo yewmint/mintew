@@ -1,4 +1,5 @@
 export * from './texture-loader'
-export * from './texture'
+export * from './image-texture'
 export * from './container'
 export * from './sprite'
+export * from './text-texture'

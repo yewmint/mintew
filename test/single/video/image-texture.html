@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test text</title>
+  </head>
+  <body>
+    <script type="text/javascript" src="../../../dist/mintew.js"></script>
+    <script type="text/javascript" src="../mock.js"></script>
+    <img onload="setup(this)" src="../test.jpg" alt="">
+    <script type="text/javascript">
+    function setup(img){
+      const {Sprite, ImageTexture} = window.Mintew.Modules.Video
+      let webgl = getContext()
+      webgl.clear()
+      let texture = new ImageTexture(img, webgl)
+      let sprite = new Sprite(webgl, texture)
+      sprite.paint()
+    }
+    </script>
+  </body>
+</html>

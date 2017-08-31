@@ -12,31 +12,39 @@ import { Func } from '../utils'
 */
 export class Texture {
   /**
-  * @param {Image} img
-  * @param {WebGl} webgl
+  * @param {WebGL} webgl
   */
-  constructor (img, webgl) {
+  constructor (webgl) {
     /**
-    * width of texture
-    * @type {number} width
+    * x scale to fit power-of-2 width
+    * @type {number} _xScale
     */
-    this.width = img.width
+    this._xScale = 1
 
     /**
-    * height of texture
-    * @type {number} height
+    * y scale to fit power-of-2 height
+    * @type {number} _yScale
     */
-    this.height = img.height
+    this._yScale = 1
 
-    this._createTexture(img, webgl)
+    /**
+    * gl texture created by webgl
+    * @type {WebGLTexture} _glTex
+    */
+    this._glTex = null
+
+    /**
+    * webgl instance
+    * @type {WebGL} _webgl
+    */
+    this._webgl = webgl
   }
 
   /**
   * bind texture to webgl
-  * @param {WebGL} webgl
   */
-  bind (webgl){
-    webgl.texture(this._glTex)
+  bind (){
+    this._webgl.texture(this._glTex)
   }
 
   /**
@@ -55,37 +63,20 @@ export class Texture {
   /**
   * create texture to fit power-of-2 image
   * @private
-  * @param {Image} img
-  * @param {WebGL} webgl
+  * @param {Image|ImageData} data
   */
-  _createTexture (img, webgl){
-    let texWidth = Func.nextPowerOfTwo(img.width)
-    let texHeight = Func.nextPowerOfTwo(img.height)
+  _createFitTexture (data){
+    throw new Error('Texture: must override this method.')
+  }
 
-    /**
-    * x scale to fit power-of-2 width
-    * @type {number} _xScale
-    */
-    this._xScale = img.width / texWidth
-
-    /**
-    * y scale to fit power-of-2 height
-    * @type {number} _yScale
-    */
-    this._yScale = img.height / texHeight
-
-    let cvs = document.createElement('canvas')
-    let ctx = cvs.getContext('2d')
-    cvs.width = texWidth
-    cvs.height = texHeight
-
-    ctx.drawImage(img, 0, texHeight - img.height)
-    let fixedImg = ctx.getImageData(0, 0, texHeight, texWidth)
-
-    /**
-    * gl texture created by webgl
-    * @type {WebGLTexture} _glTex
-    */
-    this._glTex = webgl.loadTexture(fixedImg)
+  /**
+  * clear texture
+  */
+  release(){
+    let webgl = this._webgl
+    let tex = this._glTex
+    if (webgl.isTexture(tex)){
+      webgl.deleteTexture(tex)
+    }
   }
 }
