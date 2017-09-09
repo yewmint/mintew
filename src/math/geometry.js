@@ -144,6 +144,18 @@ export class Point {
     this._invokeCb()
   }
 
+  get data (){
+    return {
+      x: this.x,
+      y: this.y
+    }
+  }
+
+  set data ({x, y}){
+    this._x = x
+    this._y = y
+  }
+
   /**
    * add 2 points
    * @param {Point} pt another point
