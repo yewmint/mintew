@@ -1,10 +1,14 @@
 import { Component } from './component'
 import { Mat, Rect, Point } from '../math'
+import { Entity } from '../framework'
 
 /**
 * store position, pivot, rotation, scale and Transform
 */
 export class Transform extends Component{
+  static name (){
+    return 'transform'
+  }
   /**
   *
   */
@@ -190,10 +194,12 @@ export class Transform extends Component{
       this.modified = true
     }
 
-    if (ctx.parent.modified) {
+    if (this.entity.transform.modified) {
       let tran = this.parent.globalTransform
       this.globalTransform = tran.multiply(this.localTransform)
       this.modified = true
     }
   }
 }
+
+Entity.register(Transform)

@@ -3,7 +3,7 @@
 */
 
 import { Func } from '../utils'
-import { Texture } from './texture'
+import { ImageTexture } from './image-texture'
 
 /**
  * TextureLoader provides functionality to pre-load texture.
@@ -45,6 +45,10 @@ export class TextureLoader {
    * @return {Promise} return loaded Sound object
    */
   load (){
+    if (this._queue.size === 0){
+      return
+    }
+
     const loadTexture = (resolve)=> {
       if (this._queue.size === 0){
         resolve(new Map)
@@ -57,7 +61,7 @@ export class TextureLoader {
 
         img.onload = ()=> {
           let name = Func.name(url)
-          this._textures.set(name, new Texture(img, this._webgl))
+          this._textures.set(name, new ImageTexture(img, this._webgl))
 
           if (this._textures.size == this._queue.size){
             resolve(this._textures)

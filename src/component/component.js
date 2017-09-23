@@ -1,4 +1,8 @@
 export class Component {
+  static name (){
+    return 'component'
+  }
+
   constructor (entity){
     this.entity = entity
   }
@@ -19,7 +23,15 @@ export class Component {
 
   }
 
+  get parent (){
+    return this.entity.parent[this.constructor.name()]
+  }
+
   update (){
 
+  }
+
+  release (){
+    this.entity = null
   }
 }

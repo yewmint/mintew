@@ -19,11 +19,6 @@ const validateVbo = function (vbo){
  * webgl = new WebGL(canvas)
  * webgl.init()
  * webgl.clear()
- * webgl.view(1280, 720)
- * webgl.translate(0, 0)
- * webgl.rotate(0)
- * webgl.scale(1, 1)
- * webgl.pivot(0, 0)
  */
 export class WebGL{
   /**
@@ -58,7 +53,7 @@ export class WebGL{
   /**
    * init context of canvas
    */
-  init (){
+  init (width, height){
     const canvas = this._canvas
     const gl = canvas.getContext('webgl')
     if (!gl) {
@@ -76,6 +71,8 @@ export class WebGL{
     this._shader = shader
 
     this._initAttrsAndUnifs()
+    this.view(width, height)
+    this.transform(Mat.eye(4, 1))
   }
 
   /**
