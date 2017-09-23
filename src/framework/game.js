@@ -61,6 +61,7 @@ export class Game {
   }
 
   _loop (){
+    this.webgl.clear()
     this.root.update()
     this._triggerNextLoop()
   }

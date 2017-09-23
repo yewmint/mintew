@@ -134,7 +134,7 @@ export class TextureRenderer extends Renderer{
   */
   render (webgl){
     super.render(webgl)
-    webgl.texture(this.texture)
+    this.texture.bind()
     webgl.drawBox(this._box)
   }
 

@@ -50,7 +50,7 @@ export class Base extends Component{
     }
   }
 
-  update (ctx){
+  update (){
     if (this.parent){
       this.globalOpacity = this.opacity * this.parent.globalOpacity
     }

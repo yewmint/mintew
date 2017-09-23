@@ -9,12 +9,20 @@
     <script type="text/javascript" src="../../../dist/mintew.js"></script>
     <script type="text/javascript">
       let app = new Mintew('test', 1280, 720)
+      const chg = function (ent){
+        ent.transform.position.x += 2
+        ent.transform.position.y += 2
+        ent.transform.rotation += Math.PI / 200
+      }
       const plot = async function (){
         await app.load(['test.jpg'])
         let ent = app.entity()
         ent.attach('sprite', 'test')
+        ent.base.opacity = 0.5
+        ent.transform.pivot.x = 128
+        ent.transform.pivot.y = 80
         app.root.addChild(ent)
-        console.log(app.resource.texture('test'))
+        setInterval(() => chg(ent), 33)
       }
       app.run(plot)
     </script>

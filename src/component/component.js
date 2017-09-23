@@ -24,7 +24,7 @@ export class Component {
   }
 
   get parent (){
-    return this.entity.parent[this.constructor.name()]
+    return this.entity.parent && this.entity.parent[this.constructor.name()]
   }
 
   update (){

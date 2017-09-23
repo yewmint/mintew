@@ -194,9 +194,14 @@ export class Transform extends Component{
       this.modified = true
     }
 
-    if (this.entity.transform.modified) {
-      let tran = this.parent.globalTransform
-      this.globalTransform = tran.multiply(this.localTransform)
+    if (this.modified || (this.parent && this.parent.modified)) {
+      if (this.parent){
+        let tran = this.parent.globalTransform
+        this.globalTransform = tran.multiply(this.localTransform)
+      }
+      else {
+        this.globalTransform = this.localTransform
+      }
       this.modified = true
     }
   }
