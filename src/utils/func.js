@@ -1,12 +1,12 @@
 /**
- * Provides miscellaneous functions
- */
+* Provides miscellaneous functions
+*/
 export class Func {
   /**
-   * extract file name from url
-   * @param {string} url
-   * @return {string}
-   */
+  * extract file name from url
+  * @param {string} url
+  * @return {string}
+  */
   static name (url){
     let slashPos = url.lastIndexOf('/')
     let backSlashPos = url.lastIndexOf('\\')
@@ -47,5 +47,25 @@ export class Func {
     }
 
     return ans
+  }
+
+  /**
+   * get extension name of path
+   * @param {string} path
+   * @return {string}
+   */
+  static extname (path){
+    let dotPos = path.lastIndexOf('.')
+    return path.slice(dotPos + 1)
+  }
+
+  /**
+   * if ele is one of arr
+   * @param {object} ele
+   * @param {object[]} arr
+   * @return {bool}
+   */
+  static oneOf(ele, arr){
+    return arr.indexOf(ele) != -1
   }
 }

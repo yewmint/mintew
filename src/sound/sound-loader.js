@@ -45,6 +45,10 @@ export class SoundLoader {
    * @return {Promise} return loaded Sound object
    */
   load (){
+    if (this._queue.size === 0){
+      return
+    }
+    
     const loadAudio = (resolve)=> {
       for (let url of this._queue){
         let audio = document.createElement("audio")

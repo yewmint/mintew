@@ -1,15 +1,18 @@
-import { Rednerer } from './renderer'
+import { Renderer } from './renderer'
 import { Mat, Rect, Point } from '../math'
 
 /**
 * render texture on screen
 */
-export class TextureRenderer extends Rednerer{
+export class TextureRenderer extends Renderer{
+  static name (){
+    return 'texture-renderer'
+  }
   /**
   * @param {WebGL} webgl
   * @param {Texture} texture
   */
-  constructor (entity, webgl, texture){
+  constructor (entity, webgl){
     super(entity)
 
     /**
@@ -32,7 +35,7 @@ export class TextureRenderer extends Rednerer{
      * @private
      * @type {Texture} texture
      */
-    this._texture = texture
+    this._texture = null
 
     /**
     * width of renderer
@@ -48,8 +51,8 @@ export class TextureRenderer extends Rednerer{
     */
     this._height = 0
 
-    this._updateSize()
-    this._updateBox()
+    // this._updateSize()
+    // this._updateBox()
   }
 
   /**
@@ -129,8 +132,9 @@ export class TextureRenderer extends Rednerer{
   /**
   * render texture on screen
   */
-  render (){
-    super.render()
+  render (webgl){
+    super.render(webgl)
+    webgl.texture(this.texture)
     webgl.drawBox(this._box)
   }
 

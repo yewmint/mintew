@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script type="text/javascript" src="../../../dist/mintew.js"></script>
+    <script type="text/javascript">
+      let app = new Mintew('test', 1280, 720)
+      const plot = async function (){
+        await app.load(['test.jpg'])
+        let ent = app.entity()
+        ent.attach('sprite', 'test')
+        app.root.addChild(ent)
+        console.log(app.resource.texture('test'))
+      }
+      app.run(plot)
+    </script>
+  </body>
+</html>
