@@ -2,6 +2,7 @@ import { Resource } from './resource'
 import { Entity } from './entity'
 import { WebGL } from '../webgl'
 import { Context } from './context'
+import { InputDispatcher } from './input-dispatcher'
 
 export class Game {
   constructor (parentId, width, height){
@@ -11,7 +12,6 @@ export class Game {
     // input = new Input()
     let resource = new Resource()
     Context.set('resource', resource)
-
 
     this._modules = {
       // renderer,
@@ -54,6 +54,8 @@ export class Game {
     this.webgl.init(width, height)
     this.webgl.clear()
     Context.set('webgl', this.webgl)
+    this.input = new InputDispatcher(cvs)
+    Context.set('input', this.input)
   }
 
   _triggerNextLoop (){

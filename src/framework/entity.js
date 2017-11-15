@@ -1,4 +1,3 @@
-import { Base, Transform } from '../component'
 const componentClasses = new Map
 
 export class Entity {

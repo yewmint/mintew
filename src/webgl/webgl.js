@@ -60,7 +60,7 @@ export class WebGL{
       throw new Error('Failed to get webgl context')
     }
 
-    gl.viewport(0, 0, canvas.width, canvas.height)
+    gl.viewport(0, 0, width, height)
     gl.enable(gl.BLEND)
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
     gl.clearColor(...CLEAR_COLOR)
@@ -80,7 +80,6 @@ export class WebGL{
    * @private
    */
   _initAttrsAndUnifs (){
-    this.view(1280, 720)
     this.transform(Mat.eye(4, 1))
     this.color([0.0, 0.0, 0.0, 1.0])
   }
@@ -107,6 +106,14 @@ export class WebGL{
    */
   line (){
     return new Line(this._gl)
+  }
+
+  isTexture (tex){
+    return this._gl.isTexture(tex)
+  }
+
+  deleteTexture (tex){
+    this._gl.deleteTexture(tex)
   }
 
   /**

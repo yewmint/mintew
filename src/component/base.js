@@ -1,6 +1,5 @@
 import { Component } from './component'
-import { Mat, Rect, Point } from '../math'
-import { Entity } from '../framework'
+import { Entity } from '../framework/entity.js'
 
 /**
 * render texture on screen

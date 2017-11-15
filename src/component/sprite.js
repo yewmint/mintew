@@ -1,5 +1,6 @@
-import { TextureRenderer } from './texture-renderer'
-import { Context, Entity } from '../framework'
+import { TextureRenderer } from '../renderer'
+import { Context } from '../framework'
+import { Entity } from '../framework/entity.js'
 
 export class Sprite extends TextureRenderer {
   static name (){

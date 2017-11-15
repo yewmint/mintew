@@ -1,11 +1,15 @@
 import { Component } from './component'
-import { Mat, Rect, Point } from '../math'
-import { Entity } from '../framework'
+import { Point, Mat } from '../math'
+import { Entity } from '../framework/entity.js'
 
 /**
 * store position, pivot, rotation, scale and Transform
 */
 export class Transform extends Component{
+  // static create (entity, ...args){
+  //   return new Transform(entity, ...args)
+  // }
+
   static name (){
     return 'transform'
   }
@@ -185,7 +189,7 @@ export class Transform extends Component{
     this._updateTransform()
   }
 
-  update (ctx){
+  update (){
     this.modified = false
 
     if (this._dirty){

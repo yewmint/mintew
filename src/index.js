@@ -20,7 +20,12 @@
 //   Component
 // }
 
-import * as RendererModule from './renderer'
-import { Game } from './framework'
+import 'babel-polyfill'
 
-window.Mintew = Game
+import '../assets/bg.png'
+import '../assets/normal-dialog.png'
+import '../assets/question-dialog.png'
+import '../assets/question-dialog-true.png'
+import '../assets/question-dialog-false.png'
+
+import './plot'

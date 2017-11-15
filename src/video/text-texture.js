@@ -12,13 +12,14 @@ export class TextTexture extends Texture {
     webgl,
     {
       size = 20,
-      font = 'arial',
+      font = 'serif',
+      fontType = '',
       color = 'black',
       width = 100
     }
   ) {
     super (webgl)
-    let data = this._createTextTexture(text, size, font, color, width)
+    let data = this._createTextTexture(text, size, font, color, width, fontType)
     this._createFitTexture(data)
   }
 
@@ -44,7 +45,7 @@ export class TextTexture extends Texture {
     cvs.height = texHeight
 
     ctx.putImageData(data, 0, texHeight - data.height)
-    document.body.appendChild(cvs)
+    // document.body.appendChild(cvs)
     let fixedImg = ctx.getImageData(0, 0, texWidth, texHeight)
     this._glTex = webgl.loadTexture(fixedImg)
   }
@@ -58,9 +59,10 @@ export class TextTexture extends Texture {
   * @param {string} color
   * @param {number} width
   */
-  _createTextTexture (text, size, font, color, width){
+  _createTextTexture (text, size, font, color, width, fontType){
     let cvs = document.createElement('canvas')
     let ctx = cvs.getContext('2d')
+    ctx.font = `${fontType} ${size}px "${font}"`
 
     let lines = []
     let start = 0
@@ -79,7 +81,7 @@ export class TextTexture extends Texture {
 
     cvs.width = cvsWidth
     cvs.height = cvsHeight
-    ctx.font = `${size}px ${font}`
+    ctx.font = `${fontType} ${size}px "${font}"`
     ctx.fillStyle = color
 
     for (let i = 0; i < lines.length; ++i){
@@ -87,7 +89,7 @@ export class TextTexture extends Texture {
       let y = i * lineHeight + size
       ctx.fillText(lines[i], x, y)
     }
-    document.body.appendChild(cvs)
+    // document.body.appendChild(cvs)
 
     return ctx.getImageData(0, 0, cvsWidth, cvsHeight)
   }

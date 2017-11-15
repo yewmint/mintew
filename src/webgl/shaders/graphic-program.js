@@ -1,5 +1,6 @@
-import { readFileSync } from 'fs'
 import { Program } from './program'
+import vert from './graphic.vert'
+import frag from './graphic.frag'
 
 /**
  * Program used to paint graphic
@@ -18,11 +19,8 @@ export class GraphicProgram extends Program {
    * @override
    */
   init (){
-    const vertSource = readFileSync('src/webgl/shaders/graphic.vert', 'utf8')
-    this._source(vertSource, this._vert)
-
-    const fragSource = readFileSync('src/webgl/shaders/graphic.frag', 'utf8')
-    this._source(fragSource, this._frag)
+    this._source(vert, this._vert)
+    this._source(frag, this._frag)
 
     this._compile()
 

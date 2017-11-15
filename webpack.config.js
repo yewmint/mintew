@@ -1,22 +1,63 @@
 const { resolve } = require('path')
+const nodeExternals = require('webpack-node-externals')
 
-module.exports = {
+let common = {
   devtool: '#source-map',
-  entry: {
-    'mintew': './src/index.js',
-  },
-  output: {
-    path: resolve(__dirname, 'dist'),
-    filename: '[name].js',
-  },
+  target: 'electron',
+  externals: [nodeExternals()],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['es2015']
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['env']
+        }
+      },
+      {
+        test: /\.html$/,
+        exclude: /node_modules/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
+      },
+      {
+        test: /\.png$/,
+        exclude: /node_modules/,
+        loader: 'file-loader',
+        options: {
+          name: 'image/[name].[ext]'
+        }
+      },
+      {
+        test: /\.ttf$/,
+        exclude: /node_modules/,
+        loader: 'file-loader',
+        options: {
+          name: 'font/[name].[ext]'
+        }
+      },
+      {
+        test: /\.frag$|\.vert$/,
+        exclude: /node_modules/,
+        loader: 'raw-loader'
       }
-    }]
+    ]
   }
 }
+
+module.exports = [
+  {
+    ...common,
+    entry: {
+      'mintew': './src/index.js',
+      'window': './src/window.js'
+    },
+    output: {
+      path: resolve('dist'),
+      filename: '[name].js',
+    },
+  }
+]

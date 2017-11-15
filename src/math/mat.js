@@ -69,6 +69,15 @@ export class Mat {
     return mat
   }
 
+  static coordiante(x, y, z = 0){
+    let mat = new Mat(4, 1)
+    mat.element(0, 0, x)
+    mat.element(1, 0, y)
+    mat.element(2, 0, z)
+    mat.element(3, 0, 1)
+    return mat
+  }
+
   constructor (row, col){
     this._row = row
     this._col = col

@@ -1,3 +1,7 @@
 export * from './base'
 export * from './component'
 export * from './transform'
+export * from './sprite'
+export * from './text'
+export * from './click'
+export * from './position-anim'

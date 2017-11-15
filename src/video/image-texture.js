@@ -32,7 +32,7 @@ export class ImageTexture extends Texture {
     cvs.height = texHeight
 
     ctx.drawImage(img, 0, texHeight - img.height)
-    let fixedImg = ctx.getImageData(0, 0, texHeight, texWidth)
+    let fixedImg = ctx.getImageData(0, 0, texWidth, texHeight)
     this._glTex = webgl.loadTexture(fixedImg)
   }
 }

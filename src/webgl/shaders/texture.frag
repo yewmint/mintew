@@ -6,6 +6,6 @@ uniform sampler2D uSampler;
 
 void main(void) {
   vec4 color = texture2D(uSampler, texCod);
-  color.a = opacity;
+  // color.a = opacity * color.a;
   gl_FragColor = color;
 }

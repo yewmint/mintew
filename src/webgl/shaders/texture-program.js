@@ -1,5 +1,6 @@
-import { readFileSync } from 'fs'
 import { Program } from './program'
+import vert from './texture.vert'
+import frag from './texture.frag'
 
 /**
  * Program used to paint texture
@@ -18,11 +19,8 @@ export class TextureProgram extends Program {
    * @override
    */
   init (){
-    const vertSource = readFileSync('src/webgl/shaders/texture.vert', 'utf8')
-    this._source(vertSource, this._vert)
-
-    const fragSource = readFileSync('src/webgl/shaders/texture.frag', 'utf8')
-    this._source(fragSource, this._frag)
+    this._source(vert, this._vert)
+    this._source(frag, this._frag)
 
     this._compile()
     this.use()

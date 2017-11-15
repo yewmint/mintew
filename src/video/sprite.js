@@ -77,7 +77,7 @@ export class Sprite extends PaintNode {
   * width of sprite
   */
   set width (val){
-    throw new Error("Sprite: can not modify width.")
+    throw new Error('Sprite: can not modify width.')
   }
 
   /**
@@ -91,7 +91,7 @@ export class Sprite extends PaintNode {
   * height of sprite
   */
   set height (val){
-    throw new Error("Sprite: can not modify height.")
+    throw new Error('Sprite: can not modify height.')
   }
 
   /**
