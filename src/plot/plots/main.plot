@@ -5,8 +5,10 @@
 
 [section][choice-a]
 [dialog][因吹斯听]
+[question][让我回去][吼啊][main][无可奉告][choice-b]
 [sectionend]
 
 [section][choice-b]
-[dialog][naive! I am angry!]
+[dialog][Naive! I am angry!]
+[question][让我回去][吼啊][main][无可奉告][choice-a]
 [sectionend]

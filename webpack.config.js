@@ -40,7 +40,7 @@ let common = {
         }
       },
       {
-        test: /\.frag$|\.vert$/,
+        test: /\.frag$|\.vert$|\.plot$/,
         exclude: /node_modules/,
         loader: 'raw-loader'
       }

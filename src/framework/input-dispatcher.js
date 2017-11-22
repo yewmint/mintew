@@ -5,7 +5,7 @@ export class InputDispatcher {
   }
 
   register (eventType, callback){
-    if (!this._handlers[event]){
+    if (!this._handlers[eventType]){
       this._initEvent(eventType)
     }
 

@@ -11,7 +11,7 @@ export class PositionAnim extends Component {
 
   constructor (entity){
     super(entity)
-    this._isAnimating = false
+    this.isAnimating = false
   }
 
   to (x, y, duration){
@@ -19,11 +19,11 @@ export class PositionAnim extends Component {
     this._nextPt = { x, y }
     this._startTime = new Date
     this._duration = duration
-    this._isAnimating = true
+    this.isAnimating = true
   }
 
   update (){
-    if (!this._isAnimating){
+    if (!this.isAnimating){
       return
     }
 
@@ -35,7 +35,7 @@ export class PositionAnim extends Component {
     let delta = elapsedTime / this._duration
 
     if (delta >= 1){
-      this._isAnimating = false
+      this.isAnimating = false
       transform.position = new Point(nextPt.x, nextPt.y)
     }
     else {

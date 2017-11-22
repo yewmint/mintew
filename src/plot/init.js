@@ -1,9 +1,7 @@
-
-
-
+import plot from './plots'
 
 async function init(){
-  
+  plot.init()
   
   let bg = app.entity()
   bg.attach('sprite', 'bg')
@@ -18,17 +16,6 @@ async function init(){
     isTrue => console.log(isTrue)
   )
   app.root.addChild(slider)
-  
-  // let dialog = Dialog.create(app, '无可奉告')
-  // app.root.addChild(dialog)
-
-  // let question = Question.create(
-  //   app, 
-  //   '会不会有一种内定、钦定的感觉？', 
-  //   '吼啊', 
-  //   '无可奉告',
-  //   isTrue => console.log(isTrue)
-  // )
 }
 
 app.run(init)
