@@ -2,12 +2,24 @@ import { Renderer } from './renderer'
 import { Mat, Rect, Point } from '../math'
 
 /**
-* render texture on screen
-*/
+ * render texture on screen
+ * 
+ * @export
+ * @class TextureRenderer
+ * @extends {Renderer}
+ */
 export class TextureRenderer extends Renderer{
+  /**
+   * return name of component
+   * 
+   * @static
+   * @return {string}
+   * @memberof TextureRenderer
+   */
   static name (){
     return 'texture-renderer'
   }
+
   /**
   * @param {WebGL} webgl
   * @param {Texture} texture
@@ -18,7 +30,7 @@ export class TextureRenderer extends Renderer{
     /**
      * box for renderer
      * @private
-     * @type {Box} _box
+     * @type {Box}
      */
     this._box = webgl.box()
 
@@ -26,28 +38,28 @@ export class TextureRenderer extends Renderer{
     * uv for renderer
     * can not be modifed
     * @private
-    * @type {Rect} _uv
+    * @type {Rect}
     */
     this._uv = Rect.one()
 
     /**
      * texture of renderer
      * @private
-     * @type {Texture} texture
+     * @type {Texture}
      */
     this._texture = null
 
     /**
     * width of renderer
     * @private
-    * @type {number} width
+    * @type {number}
     */
     this._width = 0
 
     /**
     * height of renderer
     * @private
-    * @type {number} height
+    * @type {number}
     */
     this._height = 0
 
@@ -70,6 +82,11 @@ export class TextureRenderer extends Renderer{
     box.uv(bpt.x, bpt.y, ept.x, ept.y)
   }
 
+  /**
+   * update size of current renderer
+   * 
+   * @memberof TextureRenderer
+   */
   _updateSize (){
     let uv = this.uv
     let texture = this._texture

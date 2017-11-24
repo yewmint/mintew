@@ -9,36 +9,36 @@ export class Program {
   constructor (gl){
     /**
      * @protected
-     * @type {WebGLRenderingContext} _gl
+     * @type {WebGLRenderingContext}
      */
     this._gl = gl
     /**
      * @protected
-     * @type {WebGLProgram} _program
+     * @type {WebGLProgram}
      */
     this._program = gl.createProgram()
 
     /**
      * @protected
-     * @type {WebGLShader} _vert for vertex shader
+     * @type {WebGLShader}
      */
     this._vert = gl.createShader(gl.VERTEX_SHADER)
 
     /**
      * @protected
-     * @type {WebGLShader} _frag for fragment shader
+     * @type {WebGLShader}
      */
     this._frag = gl.createShader(gl.FRAGMENT_SHADER)
 
     /**
      * @protected
-     * @type {Map} _locs map from name to unifrom location
+     * @type {Map}
      */
     this._unifLocs = new Map()
 
     /**
      * @protected
-     * @type {Map} _locs map from name to attribute location
+     * @type {Map}
      */
     this._attrLocs = new Map()
   }

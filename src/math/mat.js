@@ -1,4 +1,19 @@
+/**
+ * Matrix
+ * 
+ * @export
+ * @class Mat
+ */
 export class Mat {
+  /**
+   * build eye matrix
+   * 
+   * @static
+   * @param {number} size 
+   * @param {number} val 
+   * @returns {Mat}
+   * @memberof Mat
+   */
   static eye (size, val){
     let mat = new Mat(size, size)
     for (let i = 0; i < size; ++i){
@@ -69,6 +84,16 @@ export class Mat {
     return mat
   }
 
+  /**
+   * build coordinate matrix
+   * 
+   * @static
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} [z=0] 
+   * @returns {Mat}
+   * @memberof Mat
+   */
   static coordiante(x, y, z = 0){
     let mat = new Mat(4, 1)
     mat.element(0, 0, x)
@@ -78,12 +103,25 @@ export class Mat {
     return mat
   }
 
+  /**
+   * Creates an instance of Mat.
+   * @param {number} row 
+   * @param {number} col 
+   * @memberof Mat
+   */
   constructor (row, col){
     this._row = row
     this._col = col
     this._data = new Array(row * col).fill(0)
   }
 
+  /**
+   * add 2 matrixes
+   * 
+   * @param {Mat} mat 
+   * @returns {Mat}
+   * @memberof Mat
+   */
   add (mat){
     if (this._row !== mat.row || this.col !== mat.col){
       throw new Error('Mat: can not add due to unequal row and col.')
@@ -100,6 +138,13 @@ export class Mat {
     return newMat
   }
 
+  /**
+   * multiply 2 matrixes
+   * 
+   * @param {Mat} mat 
+   * @returns {Mat}
+   * @memberof Mat
+   */
   multiply (mat){
     let row = this.row
     let col = this.col
@@ -121,6 +166,15 @@ export class Mat {
     return newMat
   }
 
+  /**
+   * get or set element of matrix
+   * 
+   * @param {number} row 
+   * @param {number} col 
+   * @param {number} val 
+   * @returns {number|undefined}
+   * @memberof Mat
+   */
   element (row, col, val){
     if (typeof(val) !== 'number'){
       return this._data[col * this._row + row]
@@ -130,26 +184,56 @@ export class Mat {
     }
   }
 
+  /**
+   * get row
+   * 
+   * @memberof Mat
+   */
   get row (){
     return this._row
   }
 
+  /**
+   * set row
+   * 
+   * @memberof Mat
+   */
   set row (val){
     throw new Error('Mat: can not modify row property.')
   }
 
+  /**
+   * get col
+   * 
+   * @memberof Mat
+   */
   get col (){
     return this._col
   }
 
+  /**
+   * set col
+   * 
+   * @memberof Mat
+   */
   set col (val){
     throw new Error('Mat: can not modify col property.')
   }
 
+  /**
+   * get data
+   * 
+   * @memberof Mat
+   */
   get data (){
     return this._data
   }
 
+  /**
+   * set data
+   * 
+   * @memberof Mat
+   */
   set data (val){
     throw new Error('Mat: can not modify data property.')
   }

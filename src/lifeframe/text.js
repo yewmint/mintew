@@ -1,3 +1,11 @@
+/**
+ * create text entity
+ * 
+ * @export
+ * @param {Game} app 
+ * @param {string} text 
+ * @returns {Entity}
+ */
 export function create (app, text){
   let textEnt = app.entity()
   textEnt.attach('text', text)

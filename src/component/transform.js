@@ -3,45 +3,56 @@ import { Point, Mat } from '../math'
 import { Entity } from '../framework/entity.js'
 
 /**
-* store position, pivot, rotation, scale and Transform
-*/
+ * store position, pivot, rotation, scale and Transform
+ * 
+ * @export
+ * @class Transform
+ * @extends {Component}
+ */
 export class Transform extends Component{
-  // static create (entity, ...args){
-  //   return new Transform(entity, ...args)
-  // }
 
+  /**
+   * return name of component
+   * 
+   * @static
+   * @returns {string}
+   * @memberof Transform
+   */
   static name (){
     return 'transform'
   }
+
   /**
-  *
-  */
+   * Creates an instance of Transform.
+   * @param {Entity} entity 
+   * @memberof Transform
+   */
   constructor (entity){
     super(entity)
 
     /**
     * if transform matrix is dirty
     * @private
-    * @type {bool} _dirty
+    * @type {bool}
     */
     this._dirty = false
 
     /**
     * if modified in current update
-    * @type {bool} modified
+    * @type {bool}
     */
     this.modified = false
 
     /**
     * mark transform matrix dirty
-    * @type {function} _dirtify
+    * @type {function}
     */
     this._dirtify = () => this._dirty = true
 
     /**
     * pivot of transform
     * @private
-    * @type {Point} pivot
+    * @type {Point}
     */
     this._pivot = Point.origin()
     this._pivot.onChange(this._dirtify)
@@ -49,14 +60,14 @@ export class Transform extends Component{
     /**
     * rotation of transform
     * @private
-    * @type {number} rotation
+    * @type {number}
     */
     this._rotation = 0
 
     /**
     * scale of transform
     * @private
-    * @type {Point} scale
+    * @type {Point}
     */
     this._scale = Point.one()
     this._scale.onChange(this._dirtify)
@@ -64,20 +75,20 @@ export class Transform extends Component{
     /**
     * position of transform
     * @private
-    * @type {Point} position
+    * @type {Point}
     */
     this._position = Point.origin()
     this._position.onChange(this._dirtify)
 
     /**
     * local transformation, deduced from properties
-    * @type {Mat} localTransform
+    * @type {Mat}
     */
     this.localTransform = Mat.eye(4, 1)
 
     /**
     * global transformation, used for painting
-    * @type {Mat} globalTransform
+    * @type {Mat}
     */
     this.globalTransform = Mat.eye(4, 1)
   }
@@ -146,8 +157,9 @@ export class Transform extends Component{
   }
 
   /**
-  * udpate transform data
-  */
+   * udpate transform data
+   * @private
+   */
   _updateTransform (){
     let pvtTran = Mat.translate(-this._pivot.x, -this._pivot.y)
     let rotTran = Mat.rotate(this._rotation)
@@ -165,9 +177,9 @@ export class Transform extends Component{
   }
 
   /**
-  * extract data from component
-  * @return {object}
-  */
+   * extract data from component
+   * @return {object}
+   */
   get data (){
     return {
       position: this._position.data,
@@ -189,6 +201,11 @@ export class Transform extends Component{
     this._updateTransform()
   }
 
+  /**
+   * udpate transform
+   * 
+   * @memberof Transform
+   */
   update (){
     this.modified = false
 

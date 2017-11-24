@@ -3,11 +3,31 @@ import { Context } from '../framework'
 import { Entity } from '../framework/entity.js'
 import { Component } from './component'
 
+/**
+ * Provoides functionality to listen 'click' event.
+ * 
+ * @export
+ * @class Click
+ * @extends {Component}
+ */
 export class Click extends Component {
+  /**
+   * return name of component
+   * 
+   * @static
+   * @returns {string}
+   * @memberof Click
+   */
   static name (){
     return 'click'
   }
 
+  /**
+   * Creates an instance of Click.
+   * @param {Entity} entity 
+   * @param {function} callback 
+   * @memberof Click
+   */
   constructor (entity, callback){
     super(entity)
     this._callback = callback
@@ -18,6 +38,13 @@ export class Click extends Component {
     )
   }
 
+  /**
+   * handle click event and correct coordiantes.
+   * 
+   * @private
+   * @param {any} event 
+   * @memberof Click
+   */
   _handle (event){
     let x = event.clientX
     let y = event.target.height - event.clientY
@@ -31,6 +58,11 @@ export class Click extends Component {
     this._callback(x, y)
   }
 
+  /**
+   * release listener
+   * 
+   * @memberof Click
+   */
   release (){
     super.release()
     this._unregister()

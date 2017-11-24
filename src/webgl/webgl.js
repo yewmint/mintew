@@ -27,19 +27,19 @@ export class WebGL{
   constructor (canvas){
     /**
      * @private
-     * @type {Canvas} _gl
+     * @type {Canvas}
      */
     this._canvas = canvas
 
     /**
      * @private
-     * @type {WebGLRenderingContext} _gl
+     * @type {WebGLRenderingContext}
      */
     this._gl = null
 
     /**
      * @private
-     * @type {Shader} _shader
+     * @type {Shader}
      */
     this._shader = null
   }

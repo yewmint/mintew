@@ -4,16 +4,43 @@ import { Entity } from '../framework/entity.js'
 import { Component } from './component'
 import { Tween } from '../utils'
 
+/**
+ * perform position animation
+ * 
+ * @export
+ * @class PositionAnim
+ * @extends {Component}
+ */
 export class PositionAnim extends Component {
+  /**
+   * return name of component
+   * 
+   * @static
+   * @returns {string}
+   * @memberof PositionAnim
+   */
   static name (){
     return 'position-anim'
   }
 
+  /**
+   * Creates an instance of PositionAnim.
+   * @param {Entity} entity 
+   * @memberof PositionAnim
+   */
   constructor (entity){
     super(entity)
     this.isAnimating = false
   }
 
+  /**
+   * start animation
+   * 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} duration 
+   * @memberof PositionAnim
+   */
   to (x, y, duration){
     this._prevPt = this.entity.transform.position.data
     this._nextPt = { x, y }
@@ -22,6 +49,11 @@ export class PositionAnim extends Component {
     this.isAnimating = true
   }
 
+  /**
+   * udpate animation
+   * 
+   * @memberof PositionAnim
+   */
   update (){
     if (!this.isAnimating){
       return

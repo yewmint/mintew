@@ -21,13 +21,13 @@ export class SoundLoader {
   constructor (){
     /**
      * @private
-     * @type {Set} _queue pre-load queue
+     * @type {Set}
      */
     this._queue = new Set
 
     /**
      * @private
-     * @type {Map} _sources loaded sources
+     * @type {Map}
      */
     this._sources = new Map
   }

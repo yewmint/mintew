@@ -3,8 +3,8 @@ import { TextureProgram } from './shaders/texture-program'
 import { GraphicProgram } from './shaders/graphic-program'
 
 /**
- * @private
  * Shader provides simple way to compile program for WebGL.
+ * @private
  */
 export class Shader {
   /**
@@ -12,20 +12,20 @@ export class Shader {
    */
   constructor (gl){
     /**
+     * @type {WebGLRenderingContext}
      * @private
-     * @type {WebGLRenderingContext} _gl
      */
     this._gl = gl
 
     /**
      * parogram to pain texture
-     * @type {Program} _textureProgram
+     * @type {Program}
      */
     this._textureProgram = new TextureProgram(gl)
 
     /**
      * parogram to pain texture
-     * @type {Program} _textureProgram
+     * @type {Program}
      */
     this._graphicProgram = new GraphicProgram(gl)
   }

@@ -21,8 +21,8 @@ const mat4 = function (){
 
 /**
  * set or get value of element
- * @private
  * @return {undefined|number} value of element
+ * @private
  */
 const ele = function (mat, row, col, val){
   if (typeof val !== 'undefined'){
@@ -34,8 +34,8 @@ const ele = function (mat, row, col, val){
 }
 
 /**
- * @private
  * Mat provides functionality to build matrix.
+ * @private
  */
 export class Mat {
   /**

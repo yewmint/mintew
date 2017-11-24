@@ -1,5 +1,4 @@
 
-
 init:
 1. init renderer, player, input
 2. load resource

@@ -7,7 +7,7 @@ export class Updateable {
    */
   constructor (){
     /**
-     * @type {Map} _updateFuncs functions to update
+     * @type {Map}
      */
     this._updateFuncs = new Map()
   }

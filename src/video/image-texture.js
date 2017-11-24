@@ -1,5 +1,13 @@
 import { Func } from '../utils'
 import { Texture } from './texture'
+
+/**
+ * texture
+ * 
+ * @export
+ * @class ImageTexture
+ * @extends {Texture}
+ */
 export class ImageTexture extends Texture {
   /**
   * @param {Image} img

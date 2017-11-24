@@ -1,3 +1,6 @@
+/**
+ * describes types of animations
+ */
 export const AnimationType = {
   CUBIC_IN: 'cubicIn',
   CUBIC_OUT: 'cubicOut',

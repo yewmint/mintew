@@ -16,19 +16,19 @@ export class Triangle{
   constructor (gl){
     /**
      * @private
-     * @type {WebGLRenderingContext} _gl
+     * @type {WebGLRenderingContext}
      */
     this._gl = gl
 
     /**
      * @private
-     * @type {WebGLBuffer} _vbo vbo
+     * @type {WebGLBuffer}
      */
     this._vbo = gl.createBuffer()
 
     /**
      * @private
-     * @type {number[]} _data vertex data
+     * @type {number[]}
      */
     this._data = new Array(3 * 4).fill(0.0)
   }

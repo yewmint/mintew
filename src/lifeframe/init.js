@@ -16,6 +16,8 @@ async function init(){
     isTrue => console.log(isTrue)
   )
   app.root.addChild(slider)
+
+  let bg = app.entity()
 }
 
 app.run(init)

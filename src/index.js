@@ -28,4 +28,4 @@ import '../assets/question-dialog.png'
 import '../assets/question-dialog-true.png'
 import '../assets/question-dialog-false.png'
 
-import './plot'
+import './lifeframe'

@@ -15,13 +15,13 @@ export class Sound {
   constructor (sources){
     /**
      * @private
-     * @type {Map} _sources all loaded sources
+     * @type {Map}
      */
     this._sources = sources
 
     /**
      * @private
-     * @type {number} _volumn main volumn
+     * @type {number}
      */
     this._volumn = 1
   }

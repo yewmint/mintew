@@ -17,25 +17,25 @@ export class Rect {
   constructor (bx, by, ex, ey){
     /**
      * x of begin point
-     * @type {number} bx
+     * @type {number}
      */
     this.bx = bx
 
     /**
      * x of begin point
-     * @type {number} by
+     * @type {number}
      */
     this.by = by
 
     /**
      * x of end point
-     * @type {number} ex
+     * @type {number}
      */
     this.ex = ex
 
     /**
      * y of end point
-     * @type {number} ey
+     * @type {number}
      */
     this.ey = ey
   }
@@ -77,21 +77,21 @@ export class Point {
     /**
      * x axis
      * @private
-     * @type {number} x
+     * @type {number}
      */
     this._x = x
 
     /**
      * y axis
      * @private
-     * @type {number} y
+     * @type {number}
      */
     this._y = y
 
     /**
      * callback when modifed
      * @private
-     * @type {function} _cb
+     * @type {function}
      */
     this._cb = null
   }
@@ -144,6 +144,11 @@ export class Point {
     this._invokeCb()
   }
 
+  /**
+   * get data of Point
+   * 
+   * @memberof Point
+   */
   get data (){
     return {
       x: this.x,
@@ -151,6 +156,11 @@ export class Point {
     }
   }
 
+  /**
+   * set data of Point
+   * 
+   * @memberof Point
+   */
   set data ({x, y}){
     this._x = x
     this._y = y

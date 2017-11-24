@@ -17,19 +17,19 @@ export class Source {
   constructor (audio){
     /**
      * @private
-     * @type {Audio} _audio loaded audio object
+     * @type {Audio}
      */
     this._audio = audio
 
     /**
      * @private
-     * @type {number} _volumn volumn of source
+     * @type {number}
      */
     this._volumn = 1
 
     /**
      * @private
-     * @type {number} _mainVolumn system main volumn
+     * @type {number}
      */
     this._mainVolumn = 1
 

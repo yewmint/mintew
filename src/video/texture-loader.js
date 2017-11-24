@@ -15,19 +15,19 @@ export class TextureLoader {
   constructor (webgl){
     /**
      * @private
-     * @type {Set} _queue pre-load queue
+     * @type {Set}
      */
     this._queue = new Set
 
     /**
      * @private
-     * @type {Map} _textures loaded textures
+     * @type {Map}
      */
     this._textures = new Map
 
     /**
     * @private
-    * @type {WebGL} _webgl
+    * @type {WebGL}
     */
     this._webgl = webgl
   }

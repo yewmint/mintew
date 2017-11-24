@@ -16,14 +16,14 @@ export class PaintNode {
   constructor (){
     /**
     * opacity of node
-    * @type {number} opacity
+    * @type {number}
     */
     this.opacity = 1
 
     /**
      * pivot of node
      * @private
-     * @type {Point} pivot
+     * @type {Point}
      */
     this._pivot = Point.origin()
     this._pivot.onChange(()=> this._updateTransform())
@@ -31,14 +31,14 @@ export class PaintNode {
     /**
      * rotation of node
      * @private
-     * @type {number} rotation
+     * @type {number}
      */
     this._rotation = 0
 
     /**
      * scale of node
      * @private
-     * @type {Point} scale
+     * @type {Point}
      */
     this._scale = Point.one()
     this._scale.onChange(()=> this._updateTransform())
@@ -46,21 +46,21 @@ export class PaintNode {
     /**
     * position of node
     * @private
-    * @type {Point} position
+    * @type {Point}
     */
     this._position = Point.origin()
     this._position.onChange(()=> this._updateTransform())
 
     /**
     * z index of node
-    * @type {number} zIndex
+    * @type {number}
     */
     this.zIndex = 0
 
     /**
     * transform of node, deduced from properties
     * @private
-    * @type {Mat} _transform
+    * @type {Mat}
     */
     this._transform = Mat.eye(4, 1)
   }

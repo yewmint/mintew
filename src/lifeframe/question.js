@@ -1,5 +1,16 @@
 import * as Text from './text'
 
+/**
+ * create a question dialog
+ * 
+ * @export
+ * @param {Game} app 
+ * @param {string} text 
+ * @param {string} trueText 
+ * @param {string} falseText 
+ * @param {function({number})} callback 
+ * @returns {Entity}
+ */
 export function create (app, text, trueText, falseText, callback){
   let frameEnt = app.entity()
   frameEnt.attach('sprite', 'question-dialog')
@@ -47,6 +58,9 @@ export function create (app, text, trueText, falseText, callback){
     ent.remove('click')
   })
 
+  /**
+   * change sprite texture by selection
+   */
   ent.select = (isTrue) => {
     if (isTrue){
       frameEnt.sprite.imageName = 'question-dialog-true'

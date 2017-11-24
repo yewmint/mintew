@@ -1,5 +1,13 @@
 import * as Text from './text'
 
+/**
+ * create a dialog
+ * 
+ * @export
+ * @param {Game} app 
+ * @param {string} text 
+ * @returns {Entity}
+ */
 export function create (app, text){
   let frameEnt = app.entity()
   frameEnt.attach('sprite', 'normal-dialog')

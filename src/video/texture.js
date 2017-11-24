@@ -17,25 +17,25 @@ export class Texture {
   constructor (webgl) {
     /**
     * x scale to fit power-of-2 width
-    * @type {number} _xScale
+    * @type {number}
     */
     this._xScale = 1
 
     /**
     * y scale to fit power-of-2 height
-    * @type {number} _yScale
+    * @type {number}
     */
     this._yScale = 1
 
     /**
     * gl texture created by webgl
-    * @type {WebGLTexture} _glTex
+    * @type {WebGLTexture}
     */
     this._glTex = null
 
     /**
     * webgl instance
-    * @type {WebGL} _webgl
+    * @type {WebGL}
     */
     this._webgl = webgl
   }

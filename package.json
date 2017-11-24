@@ -1,13 +1,13 @@
 {
   "name": "mintew",
-  "version": "0.0.1",
-  "description": "a detective game",
+  "version": "1.0.0",
+  "description": "simple game engine",
   "main": "dist/window.js",
   "scripts": {
     "lint": "eslint src --max-warnings 0",
     "dist": "npm run lint && webpack -p",
     "watch": "webpack --watch",
-    "doc": "esdoc",
+    "doc": "jsdoc -c ./.jsdoc.json",
     "test": "floss -p test",
     "start": "electron .",
     "single": "start http://127.0.0.1:1234/test/single & node server"
@@ -25,10 +25,10 @@
     "babel-loader": "^7.0.0",
     "babel-plugin-version-inline": "^1.0.0",
     "babel-preset-env": "^1.6.1",
-    "esdoc": "^0.5.2",
     "eslint": "^3.19.0",
     "express": "^4.15.3",
     "file-loader": "^1.1.5",
+    "jsdoc": "^3.5.5",
     "raw-loader": "^0.5.1",
     "webpack": "^2.6.1",
     "webpack-node-externals": "^1.6.0"

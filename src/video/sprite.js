@@ -22,14 +22,14 @@ export class Sprite extends PaintNode {
     * webgl instance
     * can not be modifed
     * @private
-    * @type {WebGL} _webgl
+    * @type {WebGL}
     */
     this._webgl = webgl
 
     /**
      * box for painting
      * @private
-     * @type {Box} _box
+     * @type {Box}
      */
     this._box = webgl.box()
 
@@ -37,28 +37,28 @@ export class Sprite extends PaintNode {
     * uv for texture
     * can not be modifed
     * @private
-    * @type {Rect} _uv
+    * @type {Rect}
     */
     this._uv = uv
 
     /**
      * texture of sprite
      * @private
-     * @type {Texture} texture
+     * @type {Texture}
      */
     this._texture = texture
 
     /**
     * width of sprite
     * @private
-    * @type {number} width
+    * @type {number}
     */
     this._width = texture.width * (uv.ex - uv.bx)
 
     /**
     * height of sprite
     * @private
-    * @type {number} height
+    * @type {number}
     */
     this._height = texture.height * (uv.ey - uv.by)
 
