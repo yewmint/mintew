@@ -20,7 +20,7 @@ Inspired by Life Line, Life Frame is a visual novel to satirize abnormal laborat
 
 ## Test
 
-`./test/`
+`./test/` has been deprecated since number of webgl instances in single page is limited.
 
 ## LISCENSE
 
