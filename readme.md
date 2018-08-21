@@ -14,7 +14,7 @@ Mintew is an experimental project aiming to construct a 2D game engine using onl
 
 ## Life Frame
 
-Life Frame is a artist proof for testing Mintew.
+Life Frame is an artist proof for testing Mintew.
 
 Inspired by Life Line, Life Frame is a visual novel to satirize abnormal laboratory life in Univ.
 
